@@ -1,0 +1,93 @@
+[
+    {
+        "Name" : "Americano",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 59,
+        "PictureUrl" : "/images/products/Americano.jpg",
+        "Type" : "Coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 30
+    },
+    {
+        "Name" : "Cafe Latte",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 89,
+        "PictureUrl" : "/images/products/Cafe Latte.jpg",
+        "Type" : "Coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 25
+    },
+    {
+        "Name" : "Spanish Latte",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 89,
+        "PictureUrl" : "/images/products/Spanish Latte.jpg",
+        "Type" : "Coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 40
+    },
+    {
+        "Name" : "Cafe Mocha",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 89,
+        "PictureUrl" : "/images/products/Cafe Mocha.jpg",
+        "Type" : "Coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 29
+    },
+    {
+        "Name" : "Caramel Macchiato",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 99,
+        "PictureUrl" : "/images/products/Caramel Macchiato.jpg",
+        "Type" : "Coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 32
+    },
+    {
+        "Name" : "Matcha Latte",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 89,
+        "PictureUrl" : "/images/products/Matcha Latte.jpg",
+        "Type" : "Non-coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 30
+    },
+    {
+        "Name" : "Dirty Matcha",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 99,
+        "PictureUrl" : "/images/products/Dirty Matcha.jpg",
+        "Type" : "Coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 26
+    },
+    {
+        "Name" : "Strawberry Latte",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 89,
+        "PictureUrl" : "/images/products/Strawberry Latte.jpg",
+        "Type" : "Non-coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 24
+    },
+    {
+        "Name" : "Blueberry Latte",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 89,
+        "PictureUrl" : "/images/products/Blueberry Latte.jpg",
+        "Type" : "Non-coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 36
+    },
+    {
+        "Name" : "Strawberry Matcha",
+        "Description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing Fusce est.",
+        "Price" : 99,
+        "PictureUrl" : "/images/products/Strawberry Matcha.jpg",
+        "Type" : "Non-coffee",
+        "Brand" : "N/A",
+        "QuantityInStock" : 21
+    }
+
+]
