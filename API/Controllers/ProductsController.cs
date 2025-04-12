@@ -1,4 +1,3 @@
-using API.RequestHelpers;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
@@ -17,7 +16,7 @@ public class ProductsController(IGenericRepository<Product> repo) : BaseApiContr
 
         var spec = new ProductSpecification(specParams);
 
-        return Ok(await CreatePagedResult(repo, spec, specParams.PageIndex, specParams.PageSize));
+        return await CreatePagedResult(repo, spec, specParams.PageIndex, specParams.PageSize);
     }
 
     [HttpGet("{id:int}")]
