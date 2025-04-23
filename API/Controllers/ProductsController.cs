@@ -90,7 +90,7 @@ public class ProductsController(IGenericRepository<Product> repo) : BaseApiContr
         return Ok(await repo.ListAsync(spec));
     }
 
-    private bool ProductExists(int id)
+    private bool    ProductExists(int id)
     {
         return repo.Exists(id);
     }
