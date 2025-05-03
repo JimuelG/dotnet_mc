@@ -20,11 +20,11 @@ public static class AddressMappingExtensions
         };
     }
 
-    public static AddressDto ToEntity(this AddressDto addressDto)
+    public static Address ToEntity(this AddressDto addressDto)
     {
-        if (addressDto == null) throw new ArgumentException(nameof(addressDto));
+        if (addressDto == null) throw new ArgumentNullException(nameof(addressDto));
 
-        return new AddressDto
+        return new Address
         {
             Line1 = addressDto.Line1,
             Line2 = addressDto.Line2,
@@ -37,16 +37,15 @@ public static class AddressMappingExtensions
 
     public static void UpdateFromDto(this Address address, AddressDto addressDto)
     {
-        if (addressDto == null) throw new ArgumentException(nameof(addressDto));
-        if (address == null) throw new ArgumentException(nameof(address));
+        if (addressDto == null) throw new ArgumentNullException(nameof(addressDto));
+        if (address == null) throw new ArgumentNullException(nameof(address)); 
 
-
-            address.Line1 = addressDto.Line1;
-            address.Line2 = addressDto.Line2;
-            address.City = addressDto.City;
-            address.State = addressDto.State;
-            address.Country = addressDto.Country;
-            address.PostalCode= addressDto.PostalCode;
+        address.Line1 = addressDto.Line1;
+        address.Line2 = addressDto.Line2;
+        address.City = addressDto.City;
+        address.State = addressDto.State;
+        address.Country = addressDto.Country;
+        address.PostalCode= addressDto.PostalCode;
 
     }
 }
