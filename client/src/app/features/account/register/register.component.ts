@@ -20,7 +20,7 @@ import { TextInputComponent } from "../../../shared/components/text-input/text-i
     MatLabel,
     MatInput,
     MatButton,
-    JsonPipe,
+    JsonPipe, 
     MatError,
     TextInputComponent
 ],
