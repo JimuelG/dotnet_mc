@@ -3,6 +3,7 @@ using API.Extensions;
 using Core.Entities;
 using Core.Entities.OrderAggregate;
 using Core.Interfaces;
+using Core.Specifications;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,15 +36,16 @@ public class OrdersController(ICartService cartService, IUnitOfWork unit) : Base
                 PictureUrl = item.PictureUrl
             };
             
-            var orderItem new OrderItem
+            var orderItem = new OrderItem
             {
                 ItemOrdered = itemOrdered,
                 Price = productItem.Price,
                 Quantity = item.Quantity
             };
+            items.Add(orderItem);
         }
 
-        var deliveryMethod = await unit.Repository<DeliveryMethod>().GetByIdAsync(orderDto.DeliveryMethod);
+        var deliveryMethod = await unit.Repository<DeliveryMethod>().GetByIdAsync(orderDto.DeliveryMethodId);
 
         if (deliveryMethod == null) return BadRequest("No delivery method selected");
 
@@ -66,6 +68,30 @@ public class OrdersController(ICartService cartService, IUnitOfWork unit) : Base
         }
 
         return BadRequest("Problem creating order");
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<IReadOnlyList<OrderDto>>> GetOrdersForUser()
+    {
+        var spec = new OrderSpecification(User.GetEmail());
+
+        var orders = await unit.Repository<Order>().ListAsync(spec);
+
+        var ordersToReturn = orders.Select(o => o.ToDto()).ToList();
+
+        return Ok(ordersToReturn);
+    }
+
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<OrderDto>> GetOrderById(int id)
+    {
+        var spec = new OrderSpecification(User.GetEmail(), id);
+
+        var order = await unit.Repository<Order>().GetEntityWithSpec(spec);
+
+        if (order == null) return NotFound();
+
+        return order.ToDto();
     }
 
 }

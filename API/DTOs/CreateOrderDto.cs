@@ -9,11 +9,11 @@ public class CreateOrderDto
     public string CartId { get; set; } = string.Empty;
 
     [Required]
-    public int DeliveryMethod { get; set; }
+    public int DeliveryMethodId { get; set; }
 
     [Required]
-    public ShippingAddress ShippingAddress { get; set; }
+    public ShippingAddress ShippingAddress { get; set; } = null!;
     
     [Required]
-    public PaymentSummary PaymentSummary { get; set; }
+    public PaymentSummary PaymentSummary { get; set; } = null!;
 }
