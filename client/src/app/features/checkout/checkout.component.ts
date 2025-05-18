@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { OrderSummaryComponent } from "../../shared/component/order-summary/order-summary.component";
+import { OrderSummaryComponent } from "../../shared/components/order-summary/order-summary.component";
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatButton } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
