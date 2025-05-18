@@ -11,7 +11,7 @@ import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { Address } from '../../shared/models/user';
 import { first, firstValueFrom } from 'rxjs';
 import { AccountService } from '../../core/services/account.service';
-import { CheckoutDeliveryComponent } from "../../featyres/checkout/checkout-delivery/checkout-delivery.component";
+import { CheckoutDeliveryComponent } from "./checkout-delivery/checkout-delivery.component";
 import { CheckoutReviewComponent } from "./checkout-review/checkout-review.component";
 import { CartService } from '../../core/services/cart.service';
 import { CurrencyPipe, JsonPipe } from '@angular/common';
