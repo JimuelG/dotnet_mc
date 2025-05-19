@@ -34,6 +34,7 @@ builder.Services.AddIdentityApiEndpoints<AppUser>()
     .AddEntityFrameworkStores<StoreContext>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddSignalR();
+builder.Services.AddScoped<ICouponService, CouponService>();
 
 var app = builder.Build();
 

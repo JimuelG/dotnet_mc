@@ -1,7 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Cart, CartItem } from '../../shared/models/cart';
+import { Cart, CartItem, Coupon } from '../../shared/models/cart';
 import { Product } from '../../shared/models/product';
 import { map } from 'rxjs';
 import { DeliveryMethod } from '../../shared/models/deliveryMethod';
@@ -20,15 +20,30 @@ export class CartService {
   totals = computed(() => {
     const cart = this.cart();
     const delivery = this.selectedDelivery();
+
     if (!cart) return null;
-    const subtotal = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const subtotal = cart.items.reduce((sum, item) => 
+      sum + item.price * item.quantity, 0);
+
+    let discountValue = 0;
+
+    if (cart.coupon) {
+      if (cart.coupon.amountOff) {
+        discountValue = cart.coupon.amountOff;
+      } else if (cart.coupon.percentOff) {
+        discountValue = subtotal * (cart.coupon.percentOff / 100);
+      }
+    }
+
     const shipping = delivery ? delivery.price : 0;
-    const discount = 0;
+    
+    const total = subtotal + shipping - discountValue
+
     return {
       subtotal,
       shipping,
-      discount,
-      total: subtotal + shipping - discount
+      discount : discountValue,
+      total
     }
   })
 
@@ -41,7 +56,7 @@ export class CartService {
     )
   }
 
-  serCart(cart: Cart) {
+  setCart(cart: Cart) {
     return this.http.post<Cart>(this.baseUrl + 'cart', cart).subscribe({
       next: cart => this.cart.set(cart)
     })
@@ -60,7 +75,7 @@ export class CartService {
       if (cart.items.length === 0) {
         this.deleteCart();
       } else {
-        this.serCart(cart);
+        this.setCart(cart);
       }
     }
   }
@@ -80,7 +95,7 @@ export class CartService {
       item = this.mapProductToCartItem(item);
     }
     cart.items = this.addOrUpdateItem(cart.items, item, quantity);
-    this.serCart(cart);
+    this.setCart(cart);
   }
 
   private addOrUpdateItem(items: CartItem[], item: CartItem, quantity: number): CartItem[] {
@@ -115,5 +130,9 @@ export class CartService {
     const cart = new Cart();
     localStorage.setItem('cart_id', cart.id);
     return cart;
+  }
+
+  applyDiscount(code: string) {
+    return this.http.get<Coupon>(this.baseUrl + 'coupons/' + code);
   }
 }
